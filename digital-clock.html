@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .clock { margin: 20px; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div class="clock" id="clock"></div>
+    <script>
+        function updateClock() {
+            const timezones = ['UTC', 'America/New_York', 'Europe/London', 'Asia/Tokyo'];
+            const clockDiv = document.getElementById('clock');
+            clockDiv.innerHTML = timezones.map(tz => {
+                const date = new Date().toLocaleString('en-US', { timeZone: tz });
+                return `<div>${tz}: ${date}</div>`;
+            }).join('');
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
